@@ -1,0 +1,10 @@
+mixin title(value)
+    title #{value}
+
+mixin styles(values)
+    each value in values
+        link(rel="stylesheet", href=`/css/${value}.css`)
+
+mixin scripts(values)
+    each value in values
+        script(src=`/js/${value}.js`)

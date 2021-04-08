@@ -1,6 +1,13 @@
+include ./_mixin.pug
+-
+    var Vars = {
+        title: 'タイトル',
+        style: ['style'],
+        script: ['main']
+    }
 doctype html
 html
-head
-    include ../_include/_head.pug
-body
-    p Pug Test
+    include ./_include/_head.pug
+    body
+        p Pug Test
+        include ./_include/_foot.pug
