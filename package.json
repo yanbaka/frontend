@@ -17,16 +17,30 @@
     "delete:dist": "rimraf dist",
     "copy:static": "cpx \"static/**/*\" dist/",
     "prewatch:all": "run-s delete:dist copy:static",
-    "watch:all": "run-p watch:pug2html watch:stylus2cssprefix watch:ts watch:img start:server"  
+    "watch:all": "run-p watch:pug2html watch:stylus2cssprefix watch:ts watch:img start:server",
+    "format:stylus": "stylus-supremacy format src/**/*.styl -p .stylintrc.json -r",
+    "lint:ts": "eslint src/ts/**/*.ts",
+    "format:ts": "eslint src/ts/**/*.ts --fix",
+    "format:all": "run-p format:stylus format:ts",
+    "min:css":"cleancss -o dist/css/style.css dist/css/style.css",
+    "min:js": "uglifyjs dist/js/main.js -o dist/js/main.js",
+    "delete:map":"rimraf dist/**/*.map",
+    "prepare:all":"run-p min:js min:css delete:map"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.21.0",
+    "@typescript-eslint/parser": "^4.21.0",
     "autoprefixer": "^10.2.5",
     "browser-sync": "^2.26.14",
     "chokidar-cli": "^2.1.0",
+    "clean-css-cli": "^5.2.2",
     "cpx": "^1.5.0",
+    "eslint": "^7.23.0",
+    "eslint-config-prettier": "^8.0.0",
+    "eslint-plugin-prettier": "^3.3.1",
     "imagemin-cli": "^6.0.0",
     "imagemin-gifsicle": "^7.0.0",
     "imagemin-keep-folder": "^5.3.2",
@@ -37,9 +51,15 @@
     "npm-run-all": "^4.1.5",
     "postcss": "^8.2.9",
     "postcss-cli": "^8.3.1",
+    "prettier": "^2.2.1",
     "pug-cli": "github:pugjs/pug-cli#master",
     "rimraf": "^2.7.1",
+    "stylelint": "^13.12.0",
+    "stylint": "^2.0.0",
     "stylus": "^0.54.8",
-    "typescript": "^4.2.3"
-  }
+    "stylus-supremacy": "^2.15.0",
+    "typescript": "^4.2.3",
+    "uglify-es": "^3.3.9"
+  },
+  "dependencies": {}
 }
