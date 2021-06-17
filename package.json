@@ -12,20 +12,20 @@
     "compile:stylus2css": "stylus src/stylus/style.styl -o dist/css/ -m",
     "compile:stylus2cssprefix": "run-s compile:stylus2css compile:css2cssprefix",
     "watch:stylus2cssprefix": "chokidar \"src/stylus/\" -c \"npm run compile:stylus2cssprefix\" --initial",
-    "watch:ts": "tsc --rootDir src/ts --outDir dist/js -w",
+    "watch:ts": "webpack -w",
     "watch:img": "chokidar \"src/img/**/*\" --command \"node imagemin.js\" --initial",
     "delete:dist": "rimraf dist",
     "copy:static": "cpx \"static/**/*\" dist/",
     "prewatch:all": "run-s delete:dist copy:static",
-    "watch:all": "run-p watch:pug2html watch:stylus2cssprefix watch:ts watch:img start:server",
+    "watch:all": "run-p start:server watch:pug2html watch:stylus2cssprefix watch:ts watch:img",
     "format:stylus": "stylus-supremacy format src/**/*.styl -p .stylintrc.json -r",
     "lint:ts": "eslint src/ts/**/*.ts",
     "format:ts": "eslint src/ts/**/*.ts --fix",
     "format:all": "run-p format:stylus format:ts",
-    "min:css":"cleancss -o dist/css/style.css dist/css/style.css",
+    "min:css": "cleancss -o dist/css/style.css dist/css/style.css",
     "min:js": "uglifyjs dist/js/main.js -o dist/js/main.js",
-    "delete:map":"rimraf dist/**/*.map",
-    "prepare:all":"run-p min:js min:css delete:map"
+    "delete:map": "rimraf dist/**/*.map",
+    "prepare:all": "run-p min:js min:css delete:map"
   },
   "keywords": [],
   "author": "",
@@ -58,8 +58,14 @@
     "stylint": "^2.0.0",
     "stylus": "^0.54.8",
     "stylus-supremacy": "^2.15.0",
+    "ts-loader": "^9.2.3",
     "typescript": "^4.2.3",
-    "uglify-es": "^3.3.9"
+    "uglify-es": "^3.3.9",
+    "webpack": "^5.39.0",
+    "webpack-cli": "^4.7.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@types/events": "^3.0.0",
+    "@types/lodash": "^4.14.170"
+  }
 }
