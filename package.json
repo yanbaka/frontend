@@ -11,7 +11,7 @@
     "precompile:stylus2css": "mkdirp dist/css",
     "compile:stylus2css": "stylus src/stylus/style.styl -o dist/css/ -m",
     "compile:stylus2cssprefix": "run-s compile:stylus2css compile:css2cssprefix",
-    "watch:stylus2cssprefix": "chokidar \"src/stylus/\" -c \"npm run compile:stylus2cssprefix\" --initial",
+    "watch:stylus2cssprefix": "chokidar \"src/**/*.styl\" -c \"npm run compile:stylus2cssprefix\" --initial",
     "watch:ts": "webpack -w",
     "watch:img": "chokidar \"src/img/**/*\" --command \"node imagemin.js\" --initial",
     "delete:dist": "rimraf dist",
@@ -31,6 +31,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/pubsub-js": "^1.8.2",
     "@typescript-eslint/eslint-plugin": "^4.21.0",
     "@typescript-eslint/parser": "^4.21.0",
     "autoprefixer": "^10.2.5",
@@ -65,7 +66,6 @@
     "webpack-cli": "^4.7.2"
   },
   "dependencies": {
-    "@types/events": "^3.0.0",
-    "@types/lodash": "^4.14.170"
+    "pubsub-js": "^1.9.3"
   }
 }

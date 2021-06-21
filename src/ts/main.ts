@@ -1,4 +1,4 @@
-import _ from 'lodash';
-import EventEmitter from 'events';
+import PubSub from 'pubsub-js'
+import '../components/sample/sample'
 
-console.log("aaa")
+PubSub.publish('sample', 'sample')
