@@ -1,5 +1,6 @@
+import $ from 'jquery'
 import PubSub from 'pubsub-js'
 
-PubSub.subscribe('sample', (sample: string) => {
-    console.log(sample)
+PubSub.subscribe('sample', (msg: string, data: string) => {
+    console.log(msg, data)
 })
