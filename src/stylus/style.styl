@@ -1,1 +1,10 @@
+@import './common/_mixin.styl'
 @import '../components/sample/sample.styl'
+
+.is-pc
+	+sp()
+		display: none !important
+
+.is-sp
+	+not-sp()
+		display: none !important
